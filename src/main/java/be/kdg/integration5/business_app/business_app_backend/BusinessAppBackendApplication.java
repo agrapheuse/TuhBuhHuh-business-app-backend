@@ -8,6 +8,7 @@ public class BusinessAppBackendApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(BusinessAppBackendApplication.class, args);
+
 	}
 
 }
