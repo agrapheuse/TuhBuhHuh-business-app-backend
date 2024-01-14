@@ -1,0 +1,43 @@
+logging:
+  level:
+    be.kdg.integration5: ${BUSINESS_APP_LOGGING_LEVEL}
+server:
+  port: ${BA_APP_PORT}
+
+spring:
+
+  config:
+    additional-location: ${SPRING_CONFIG_ADDITIONAL_LOCATION}
+  profiles:
+    active: ${BUSINESS_APP_SPRING_PROFILE}
+  frontend:
+    host: ${BA_FRONTEND_HOST}
+    port: ${BA_FRONTEND_PORT}
+  jpa:
+    open-in-view: false
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+        format_sql: true
+
+  datasource:
+    url: "jdbc:mysql://${BA_MYSQL_URL}:${BA_DB_PORT}/${BA_MYSQL_DATABASE}"
+    username: ${BA_MYSQL_USER}
+    password: ${BA_MYSQL_PASSWORD}
+
+  rabbitmq:
+    host: ${RABBIT_MQ_HOST}
+    port: ${RABBIT_MQ_PORT}
+    username: ${RABBIT_MQ_DEFAULT_USER}
+    password: ${RABBIT_MQ_DEFAULT_PASS}
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: ${KEYCLOAK_URL}:${KEYCLOAK_PORT}/realms/${KEYCLOAK_REALM}/protocol/openid-connect/certs
+          issuer-uri: ${KEYCLOAK_URL}:${KEYCLOAK_PORT}/realms/${KEYCLOAK_REALM}

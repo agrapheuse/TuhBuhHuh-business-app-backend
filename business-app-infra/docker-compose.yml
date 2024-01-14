@@ -3,14 +3,14 @@
   services:
     mysql_business_app:
       image: mysql:8.1.0
-      restart: no
+      restart: 'no'
       environment:
-        MYSQL_DATABASE: '${MYSQL_DATABASE}'
-        MYSQL_USER: '${MYSQL_USER}'
-        MYSQL_PASSWORD: '${MYSQL_PASSWORD}'
-        MYSQL_ROOT_PASSWORD: '${MYSQL_ROOT_PASSWORD}'
+        MYSQL_DATABASE: '${BA_MYSQL_DATABASE}'
+        MYSQL_USER: '${BA_MYSQL_USER}'
+        MYSQL_PASSWORD: '${BA_MYSQL_PASSWORD}'
+        MYSQL_ROOT_PASSWORD: '${BA_MYSQL_ROOT_PASSWORD}'
       ports:
-        - '${DB_PORT}:3306'
+        - '${BA_DB_PORT}:3306'
       volumes:
         - ./mysql/data:/var/lib/mysql
-   
+
